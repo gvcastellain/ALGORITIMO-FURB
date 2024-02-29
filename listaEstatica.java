@@ -42,18 +42,24 @@ public class listaEstatica {
     }
 
     public void retirar(int valor) {
-        int posicao;
-        posicao = 0;
+        int posicao = 0;
+
         for (int i = 0; i < info.length; i++) { 
             if (info[i] == valor) {
                 posicao = i;
+                break;
             } 
         }
 
-        for (int i = 0; i < info.length; i++) {
+        for (; posicao < info.length- posicao; posicao++) {
             info[posicao] = info[posicao + 1];
         }
 
+        for (int i = 0; i < info.length; i++) {
+            System.out.print(info[i] + ",");
+        }
+
+        tamanho--;
     }
     
 } 
