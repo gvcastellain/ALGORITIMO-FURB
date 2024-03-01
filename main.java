@@ -4,6 +4,6 @@ class main {
         vetor.inserir(10);
         vetor.inserir(20);
         vetor.inserir(30);
-        vetor.retirar(10);
+        System.out.println(vetor.toString());
         }
     }

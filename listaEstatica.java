@@ -3,18 +3,16 @@ public class listaEstatica {
     private int[] info;
 
     public listaEstatica() {
-        info = new int[10]; 
+        instanciaArray();
     }
 
     public void inserir(int valor) {
         if (tamanho == info.length) {
-            System.out.println("redimensionar");
             redimensionar();
         }
 
         info[tamanho] = valor;
         tamanho++;
-        // System.out.println(info[0] + " - " + tamanho);
     }
 
     public void redimensionar() {
@@ -43,23 +41,73 @@ public class listaEstatica {
 
     public void retirar(int valor) {
         int posicao = 0;
+        boolean temNoArray = false;
 
         for (int i = 0; i < info.length; i++) { 
             if (info[i] == valor) {
                 posicao = i;
+                temNoArray = true;
                 break;
             } 
+        }
+
+        if (temNoArray == false) {
+            return;
         }
 
         for (; posicao < info.length- posicao; posicao++) {
             info[posicao] = info[posicao + 1];
         }
 
-        for (int i = 0; i < info.length; i++) {
-            System.out.print(info[i] + ",");
-        }
-
         tamanho--;
     }
+
+    public void liberar() {
+        instanciaArray();
+    }
     
+    public int obterElemento(int valor) {
+        int posicao = 0;
+        boolean temNoArray = false;
+
+        for (int i = 0; i < info.length; i++) { 
+            if (info[i] == valor) {
+                posicao = i;
+                temNoArray = true;
+                break;
+            } 
+        }
+
+        if (temNoArray == false) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        return posicao;
+    }
+
+    public boolean estaVazia() {
+        if (tamanho == 0) {
+            return false;
+        } 
+        return true;
+    }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+
+    public String toString() {
+        String vetorFormatado = "";
+
+        for (int i = 0; i < info.length; i++) {
+            vetorFormatado += info[i] + ",";
+        }
+
+        return vetorFormatado;
+    }
+
+    private void instanciaArray() {
+        info = new int[10]; 
+    }
+
 } 
