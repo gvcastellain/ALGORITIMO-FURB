@@ -66,23 +66,13 @@ public class listaEstatica {
         instanciaArray();
     }
     
-    public int obterElemento(int valor) {
-        int posicao = 0;
-        boolean temNoArray = false;
+    public int obterElemento(int posicaoElemento) {
 
-        for (int i = 0; i < info.length; i++) { 
-            if (info[i] == valor) {
-                posicao = i;
-                temNoArray = true;
-                break;
-            } 
-        }
-
-        if (temNoArray == false) {
+        if (posicaoElemento >= tamanho) {
             throw new IndexOutOfBoundsException();
         }
 
-        return posicao;
+        return info[posicaoElemento];
     }
 
     public boolean estaVazia() {
@@ -99,8 +89,12 @@ public class listaEstatica {
     public String toString() {
         String vetorFormatado = "";
 
-        for (int i = 0; i < info.length; i++) {
-            vetorFormatado += info[i] + ",";
+        for (int i = 0; i < tamanho; i++) {
+            vetorFormatado += info[i];
+
+            if (i < tamanho - 1) {
+                vetorFormatado += ",";
+            }
         }
 
         return vetorFormatado;
