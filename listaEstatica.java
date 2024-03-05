@@ -1,5 +1,5 @@
 public class listaEstatica {
-    private int tamanho = 0;
+    private int tamanho;
     private int[] info;
 
     public listaEstatica() {
@@ -66,20 +66,20 @@ public class listaEstatica {
         instanciaArray();
     }
     
-    public int obterElemento(int posicaoElemento) {
+    public int obterElemento(int posicao) {
 
-        if (posicaoElemento >= tamanho) {
+        if (posicao >= tamanho) {
             throw new IndexOutOfBoundsException();
         }
 
-        return info[posicaoElemento];
+        return info[posicao];
     }
 
     public boolean estaVazia() {
         if (tamanho == 0) {
-            return false;
+            return true;
         } 
-        return true;
+        return false;
     }
 
     public int getTamanho() {
@@ -102,6 +102,7 @@ public class listaEstatica {
 
     private void instanciaArray() {
         info = new int[10]; 
+        tamanho = 0;
     }
 
 } 
