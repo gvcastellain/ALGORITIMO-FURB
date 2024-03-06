@@ -31,9 +31,9 @@ public class listaEstatica<ClasseInformada> {
 
     public int buscar(ClasseInformada valor) {
         int posicao = -1;
-        for (int i = 0; i < info.length; i++) { 
+        for (int i = 0; i < tamanho; i++) { 
             if (info[i].equals(valor)) {
-                posicao = i;
+                return i;
             } 
         }
         return posicao;
@@ -103,6 +103,18 @@ public class listaEstatica<ClasseInformada> {
     private void instanciaArray() {
         info = new Object[10]; 
         tamanho = 0;
+    }
+
+    public void inverter() {
+        ClasseInformada valorFinal;
+
+        for (int i = tamanho-1; i > 1; i--) {
+            valorFinal = (ClasseInformada) info[i];
+            info[i] = info[tamanho - i -1];
+            info[tamanho - i -1] = valorFinal; 
+        } 
+        exibir();
+        
     }
 
 } 

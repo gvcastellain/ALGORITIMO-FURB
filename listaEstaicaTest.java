@@ -96,4 +96,27 @@ public class listaEstaicaTest {
         list.liberar();
         Assert.assertEquals(true, list.estaVazia());
     }
+
+    @Test 
+    public void teste10() {
+        listaEstatica list = new listaEstatica();
+        list.inserir(5);
+        list.inserir(10);
+        list.inserir(15);
+        list.inserir(20);
+        list.inverter();
+        Assert.assertEquals("20,15,10,5", list.toString());
+    }
+
+    @Test 
+    public void teste11() {
+        listaEstatica list = new listaEstatica();
+        list.inserir(5);
+        list.inserir(10);
+        list.inserir(15);
+        list.inserir(20);
+        list.inserir(25);
+        list.inverter();
+        Assert.assertEquals("25,20,15,10,5", list.toString());
+    }
 }
