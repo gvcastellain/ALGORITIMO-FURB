@@ -1,12 +1,12 @@
-public class listaEstatica {
+public class listaEstatica<ClasseInformada> {
     private int tamanho;
-    private int[] info;
+    private Object[] info;
 
     public listaEstatica() {
         instanciaArray();
     }
 
-    public void inserir(int valor) {
+    public void inserir(ClasseInformada valor) {
         if (tamanho == info.length) {
             redimensionar();
         }
@@ -16,7 +16,7 @@ public class listaEstatica {
     }
 
     public void redimensionar() {
-        int[] vetor = new int[tamanho + 10];    
+        Object[] vetor = new Object[tamanho + 10];    
         for (int i = 0; i < info.length; i++) {
             vetor[i] = info[i];
         } 
@@ -29,17 +29,17 @@ public class listaEstatica {
         }
     }   
 
-    public int buscar(int valor) {
+    public int buscar(ClasseInformada valor) {
         int posicao = -1;
         for (int i = 0; i < info.length; i++) { 
-            if (info[i] == valor) {
+            if (info[i].equals(valor)) {
                 posicao = i;
             } 
         }
         return posicao;
     }
 
-    public void retirar(int valor) {
+    public void retirar(ClasseInformada valor) {
         int posicao = 0;
         boolean temNoArray = false;
 
@@ -56,7 +56,7 @@ public class listaEstatica {
         }
 
         for (; posicao < info.length- posicao; posicao++) {
-            info[posicao] = info[posicao + 1];
+            info[posicao] = info[posicao + 1]; //talvez precisa setar o ultimo elemento pra null
         }
 
         tamanho--;
@@ -66,13 +66,13 @@ public class listaEstatica {
         instanciaArray();
     }
     
-    public int obterElemento(int posicao) {
+    public ClasseInformada obterElemento(int posicao) {
 
         if (posicao >= tamanho) {
             throw new IndexOutOfBoundsException();
         }
 
-        return info[posicao];
+        return (ClasseInformada) info[posicao];
     }
 
     public boolean estaVazia() {
@@ -97,11 +97,11 @@ public class listaEstatica {
             }
         }
 
-        return vetorFormatado;
+        return vetorFormatado.toString();
     }
 
     private void instanciaArray() {
-        info = new int[10]; 
+        info = new Object[10]; 
         tamanho = 0;
     }
 

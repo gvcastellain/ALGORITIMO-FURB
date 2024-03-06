@@ -1,10 +1,13 @@
 class main {
     public static void main(String[] args) {
-        listaEstatica list = new listaEstatica();
-        list.inserir(5);
-        list.inserir(10);
-        list.inserir(15);
-        list.inserir(20);
-        System.out.println(list.obterElemento(3));
-        }
+        listaEstatica<aluno> alunos = new listaEstatica();
+
+        alunos.inserir(new aluno("sda", 33));
+        alunos.inserir("asd");
+
+        listaEstatica<veiculos> veiculos = new listaEstatica();
+
+        veiculos.inserir(new veiculos("1231", "aaaa"));
+        veiculos.inserir(new aluno("sda", 33));
+    }
     }
