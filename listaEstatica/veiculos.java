@@ -1,3 +1,4 @@
+package listaestatica;
 public class veiculos {
     private String placa;
     private String dono;

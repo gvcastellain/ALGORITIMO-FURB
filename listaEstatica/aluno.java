@@ -1,3 +1,5 @@
+package listaestatica;
+
 public class aluno {
     private String nome;
     private int matricula;

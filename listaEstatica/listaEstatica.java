@@ -1,3 +1,7 @@
+package listaestatica;
+
+import java.util.List;
+
 public class listaEstatica<ClasseInformada> {
     private int tamanho;
     private Object[] info;
@@ -13,6 +17,14 @@ public class listaEstatica<ClasseInformada> {
 
         info[tamanho] = valor;
         tamanho++;
+    }
+
+    public void retirarElementos(int inicio, int fim) { 
+        for (int i = inicio; i <= fim; i++) {
+            info[i] = info[fim + 1 + i - inicio];
+            info[fim + 1 + i - inicio] = null;
+            tamanho --;
+        }
     }
 
     public void redimensionar() {
