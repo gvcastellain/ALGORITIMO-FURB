@@ -83,8 +83,29 @@ public class FilaVetor<T> implements Fila<T> {
     }
 
     public FilaVetor criarFilaConcatenada(FilaVetor f2) {
-        return f2;
+        int limite = this.limite + f2.limite;
+        FilaVetor<Object> FilaVetor = new FilaVetor<>(limite);
+
+        while (true) {
+            try {
+                FilaVetor.inserir(peek());
+                retirar();
+            } catch (Exception e) {
+                break;
+            }
+        }
+
+        while (true) {
+            try {
+                FilaVetor.inserir(f2.peek());
+                f2.retirar();
+            } catch (Exception e) {
+                break;
+            }
+        }
+
+
+        return FilaVetor;
     }
 
-    
 }
