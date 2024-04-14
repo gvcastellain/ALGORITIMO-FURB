@@ -108,4 +108,8 @@ public class FilaVetor<T> implements Fila<T> {
         return FilaVetor;
     }
 
+    public int getLimite() {
+        return this.limite;
+    }
+
 }
