@@ -44,7 +44,7 @@ public class FilaVetor<T> implements Fila<T> {
             throw new FilaVaziaException();
         }
 
-        return info[incio];
+        return (T) info[incio];
     }
 
     @Override
@@ -54,6 +54,7 @@ public class FilaVetor<T> implements Fila<T> {
         }
 
         T valor = peek();
+        info[incio] = null;
 
         incio = (incio + 1) % limite;
         tamanho--;
@@ -85,11 +86,14 @@ public class FilaVetor<T> implements Fila<T> {
     public FilaVetor criarFilaConcatenada(FilaVetor f2) {
         int limite = this.limite + f2.limite;
         FilaVetor<Object> FilaVetor = new FilaVetor<>(limite);
+        
+        FilaVetor<Object> f1Copy = (FilaVetor<Object>) FilaVetor.this;
+        FilaVetor<Object> f2Copy = backup(f2);
 
         while (true) {
             try {
-                FilaVetor.inserir(peek());
-                retirar();
+                FilaVetor.inserir(f1Copy.peek());
+                f1Copy.retirar();
             } catch (Exception e) {
                 break;
             }
@@ -97,8 +101,8 @@ public class FilaVetor<T> implements Fila<T> {
 
         while (true) {
             try {
-                FilaVetor.inserir(f2.peek());
-                f2.retirar();
+                FilaVetor.inserir(f2Copy.peek());
+                f2Copy.retirar();
             } catch (Exception e) {
                 break;
             }
@@ -110,6 +114,12 @@ public class FilaVetor<T> implements Fila<T> {
 
     public int getLimite() {
         return this.limite;
+    }
+
+    public FilaVetor backup(FilaVetor fila) {
+        FilaVetor<Object> filaCopy = fila;
+        
+        return filaCopy;
     }
 
 }

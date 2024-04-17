@@ -8,7 +8,7 @@ class main {
         FilaVetor.inserir(10);
         
         FilaVetor<Object> FilaVetor2 = new FilaVetor<>(4);
-        FilaVetor2.inserir(2);
+        FilaVetor2.inserir(2);   
         FilaVetor2.inserir(4);
         FilaVetor2.inserir(7);
         FilaVetor2.inserir(9);
